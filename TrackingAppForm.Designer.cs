@@ -36,9 +36,11 @@
             this.ToolStripExit = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSelectApp = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.logtimer = new System.Windows.Forms.Timer(this.components);
+            this.listViewLog = new System.Windows.Forms.ListView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,16 +101,26 @@
             this.lblSelectApp.TabIndex = 2;
             this.lblSelectApp.Text = "앱";
             // 
+            // logtimer
+            // 
+            this.logtimer.Interval = 1000;
+            // 
+            // listViewLog
+            // 
+            this.listViewLog.HideSelection = false;
+            this.listViewLog.Location = new System.Drawing.Point(0, 0);
+            this.listViewLog.Name = "listViewLog";
+            this.listViewLog.Size = new System.Drawing.Size(700, 336);
+            this.listViewLog.TabIndex = 0;
+            this.listViewLog.UseCompatibleStateImageBehavior = false;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.listViewLog);
             this.panel1.Location = new System.Drawing.Point(40, 110);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 336);
             this.panel1.TabIndex = 3;
-            // 
-            // logtimer
-            // 
-            this.logtimer.Interval = 1000;
             // 
             // TrackingAppForm
             // 
@@ -126,6 +138,7 @@
             this.Load += new System.EventHandler(this.TrackingApp_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +153,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSelectApp;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer logtimer;
+        private System.Windows.Forms.ListView listViewLog;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -36,8 +36,14 @@ namespace TapTrack
             comboBoxApp.Items.Clear();
 
             Process[] processes = Process.GetProcesses();
+            //var processes = Process.GetProcesses()
+            //    .Where(p => !string.IsNullOrWhiteSpace(p.MainWindowTitle))
+            //    .OrderBy(p => p.ProcessName)
+            //    .ToList();
 
-            foreach(Process p in processes)
+            //Dictionary<string, int> processCount = new Dictionary<string, int>();
+
+            foreach (Process p in processes)
             {
                 // 창에 있는 앱
                 if(!string.IsNullOrWhiteSpace(p.MainWindowTitle))
