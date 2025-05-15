@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics; // 앱 추적
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates; // 앱 추적
 
 namespace TapTrack
 {
@@ -16,6 +17,17 @@ namespace TapTrack
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        public class AppItem
+        {
+            public string DisplayText { get; set; }
+            public Process Process { get; set; }
+
+            public override string ToString()
+            {
+                return DisplayText;
+            }
         }
 
         // 앱 불러오기
@@ -30,7 +42,12 @@ namespace TapTrack
                 // 창에 있는 앱
                 if(!string.IsNullOrWhiteSpace(p.MainWindowTitle))
                 {
-                    comboBoxApp.Items.Add(p.MainWindowTitle);
+                    string displayText = $"{p.ProcessName} ({p.MainWindowTitle.Substring(0, Math.Min(30, p.MainWindowTitle.Length))})";
+                    comboBoxApp.Items.Add(new AppItem
+                    {
+                        DisplayText = displayText,
+                        Process = p
+                    });
                 }
             }
 
@@ -44,11 +61,22 @@ namespace TapTrack
         // TrackingApp form으로 추적중인 앱 전달
         private void btnStartTrack_Click(object sender, EventArgs e)
         {
-            string selectApp = comboBoxApp.SelectedItem?.ToString();
+            //string selectApp = comboBoxApp.SelectedItem?.ToString();
 
-            if(!string.IsNullOrEmpty(selectApp))
+            //if(!string.IsNullOrEmpty(selectApp))
+            //{
+            //    TrackingAppForm trackingApp = new TrackingAppForm(selectApp);
+            //    trackingApp.Show();
+            //    this.Hide(); // AppSelect 숨기기
+            //}
+            //else
+            //{
+            //    MessageBox.Show("앱을 선택해주세요.");
+            //}
+
+            if(comboBoxApp.SelectedItem is AppItem selectedItem)
             {
-                TrackingAppForm trackingApp = new TrackingAppForm(selectApp);
+                TrackingAppForm trackingApp = new TrackingAppForm(selectedItem.Process);
                 trackingApp.Show();
                 this.Hide(); // AppSelect 숨기기
             }

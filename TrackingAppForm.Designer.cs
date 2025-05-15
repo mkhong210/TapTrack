@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSelectApp = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.logtimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,50 +64,57 @@
             // ToolStripNewStart
             // 
             this.ToolStripNewStart.Name = "ToolStripNewStart";
-            this.ToolStripNewStart.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripNewStart.Size = new System.Drawing.Size(150, 22);
             this.ToolStripNewStart.Text = "새로 시작하기";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
             // 
             // ToolStripExit
             // 
             this.ToolStripExit.Name = "ToolStripExit";
-            this.ToolStripExit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripExit.Size = new System.Drawing.Size(150, 22);
             this.ToolStripExit.Text = "종료하기";
             this.ToolStripExit.Click += new System.EventHandler(this.ToolStripExit_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 99);
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(33, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 12);
+            this.label1.Size = new System.Drawing.Size(240, 37);
             this.label1.TabIndex = 1;
-            this.label1.Text = "현재 추적중인 앱 : ";
+            this.label1.Text = "현재 추적중인 앱 :";
             // 
             // lblSelectApp
             // 
             this.lblSelectApp.AutoSize = true;
-            this.lblSelectApp.Location = new System.Drawing.Point(233, 99);
+            this.lblSelectApp.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSelectApp.Location = new System.Drawing.Point(279, 50);
             this.lblSelectApp.Name = "lblSelectApp";
-            this.lblSelectApp.Size = new System.Drawing.Size(38, 12);
+            this.lblSelectApp.Size = new System.Drawing.Size(44, 37);
             this.lblSelectApp.TabIndex = 2;
-            this.lblSelectApp.Text = "label2";
+            this.lblSelectApp.Text = "앱";
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(119, 175);
+            this.panel1.Location = new System.Drawing.Point(40, 110);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 253);
+            this.panel1.Size = new System.Drawing.Size(700, 336);
             this.panel1.TabIndex = 3;
+            // 
+            // logtimer
+            // 
+            this.logtimer.Interval = 1000;
             // 
             // TrackingAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblSelectApp);
@@ -134,6 +141,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSelectApp;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer logtimer;
     }
 }

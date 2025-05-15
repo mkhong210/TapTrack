@@ -36,25 +36,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(152, 102);
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(32, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 12);
+            this.label1.Size = new System.Drawing.Size(450, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "추적할 앱을 선택해 주세요.";
             // 
             // comboBoxApp
             // 
+            this.comboBoxApp.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboBoxApp.FormattingEnabled = true;
-            this.comboBoxApp.Location = new System.Drawing.Point(154, 154);
+            this.comboBoxApp.Location = new System.Drawing.Point(40, 118);
             this.comboBoxApp.Name = "comboBoxApp";
-            this.comboBoxApp.Size = new System.Drawing.Size(268, 20);
+            this.comboBoxApp.Size = new System.Drawing.Size(700, 38);
             this.comboBoxApp.TabIndex = 1;
             // 
             // btnStartTrack
             // 
-            this.btnStartTrack.Location = new System.Drawing.Point(154, 236);
+            this.btnStartTrack.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnStartTrack.Location = new System.Drawing.Point(40, 479);
             this.btnStartTrack.Name = "btnStartTrack";
-            this.btnStartTrack.Size = new System.Drawing.Size(121, 23);
+            this.btnStartTrack.Size = new System.Drawing.Size(180, 41);
             this.btnStartTrack.TabIndex = 2;
             this.btnStartTrack.Text = "추적 시작하기";
             this.btnStartTrack.UseVisualStyleBackColor = true;
@@ -64,6 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.btnStartTrack);
             this.Controls.Add(this.comboBoxApp);
