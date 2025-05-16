@@ -19,7 +19,7 @@ namespace TapTrack
     {
         private Process trackProcess;
         private IKeyboardMouseEvents globalHook;
-
+        private DateTime trackingStartTime;
 
 
         // 포커스된 윈도우 핸들을 가져오는 WinAPI 함수
@@ -56,10 +56,12 @@ namespace TapTrack
             //listViewLog.Columns.Add("시간", 100);
             //listViewLog.Columns.Add("이벤트", 300);
 
-            listViewLog.Columns.Add("Time", 100);
-            listViewLog.Columns.Add("Type", 80);
-            listViewLog.Columns.Add("Detail", 200);
+            listViewLog.Columns.Add("시간", 100);
+            listViewLog.Columns.Add("타입", 130);
+            listViewLog.Columns.Add("이벤트", 180);
         }
+        
+        // 추적중인 앱 인지
 
         private bool IsTargetAppFocused()
         {
@@ -104,19 +106,37 @@ namespace TapTrack
             }
         }
 
+        // 키보드 키 입력
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             if (IsTargetAppFocused())
             {
-                AddLog("Keyboard", e.KeyCode.ToString());
+                //string log = $"{e.KeyCode} 키";
+                ////AddLog(log);
+                ////AddLog("Keyboard", e.KeyCode.ToString());
+                //AddLog("키보드 입력", log);
+
+                string combo = "";
+                if (e.Control) combo += "Ctrl + ";
+                if (e.Shift) combo += "Shift + ";
+                if (e.Alt) combo += "Alt + ";
+
+                combo += e.KeyCode.ToString();
+
+                AddLog("키보드 입력", combo);
+                
             }
         }
 
+        // 마우스 버튼 입력
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
             if (IsTargetAppFocused())
             {
-                AddLog("Mouse", e.Button.ToString());
+                string log = $"{e.Button} 버튼 클릭";
+                //AddLog(log);
+                //AddLog("마우스 입력", e.Button.ToString());
+                AddLog("마우스 입력", log);
             }
         }
 
@@ -130,17 +150,27 @@ namespace TapTrack
             // UI 스레드 안전 처리
             Invoke((MethodInvoker)(() => listViewLog.Items.Add(item)));
         }
+        //private void AddLog(string detail)
+        //{
+        //    string time = DateTime.Now.ToString("HH:mm:ss");
+        //    ListViewItem item = new ListViewItem(new[] { time, detail });
+
+        //    // UI 스레드 안전 처리
+        //    Invoke((MethodInvoker)(() => listViewLog.Items.Add(item)));
+        //}
 
 
 
         private void TrackingApp_Load(object sender, EventArgs e)
         {
             setupListview();
+            trackingStartTime = DateTime.Now;
             StartGlobalHook();
         }
 
         private void ToolStripExit_Click(object sender, EventArgs e)
         {
+            StopGlobalHook();
             this.Close();
             Application.Exit();
         }
@@ -149,6 +179,42 @@ namespace TapTrack
         {
             StopGlobalHook();
             Application.Exit(); // 종료
+        }
+
+        private void ToolStripNewStart_Click(object sender, EventArgs e)
+        {
+            StopGlobalHook();
+
+            var main = new MainPage();
+            main.Show();             
+
+            this.Close();
+        }
+
+        private void btnEnding_Click(object sender, EventArgs e)
+        {
+            DateTime trackingEndTime = DateTime.Now;
+
+            // 로그 추출 
+            List<string> logs = new List<string>();
+
+            foreach (ListViewItem item in listViewLog.Items)
+            {
+                string time = item.SubItems[0].Text;
+                string type = item.SubItems[1].Text;
+                string detail = item.SubItems[2].Text;
+
+                logs.Add($"{time} - {type} - {detail}");
+            }
+            string trackApp = lblSelectApp.Text;
+
+            // 데이터 전송 
+            var resultForm = new ResultForm(trackApp, trackingStartTime, trackingEndTime, logs);
+
+
+            StopGlobalHook();
+            resultForm.Show();
+            this.Close();
         }
     }
 }
