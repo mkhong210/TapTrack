@@ -168,17 +168,17 @@ namespace TapTrack
             StartGlobalHook();
         }
 
+        private void TrackingAppForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StopGlobalHook();
+            Application.Exit(); // 종료
+        }
+
         private void ToolStripExit_Click(object sender, EventArgs e)
         {
             StopGlobalHook();
             this.Close();
             Application.Exit();
-        }
-
-        private void TrackingAppForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            StopGlobalHook();
-            Application.Exit(); // 종료
         }
 
         private void ToolStripNewStart_Click(object sender, EventArgs e)
