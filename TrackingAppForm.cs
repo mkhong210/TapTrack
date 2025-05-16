@@ -123,7 +123,7 @@ namespace TapTrack
 
                 combo += e.KeyCode.ToString();
 
-                AddLog("키보드 입력", combo);
+                AddLog("키보드 입력", $"{combo} 키");
                 
             }
         }
@@ -133,7 +133,7 @@ namespace TapTrack
         {
             if (IsTargetAppFocused())
             {
-                string log = $"{e.Button} 버튼 클릭";
+                string log = $"{e.Button} 클릭";
                 //AddLog(log);
                 //AddLog("마우스 입력", e.Button.ToString());
                 AddLog("마우스 입력", log);

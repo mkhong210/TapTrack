@@ -87,15 +87,15 @@
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(18, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 37);
+            this.label1.Size = new System.Drawing.Size(177, 37);
             this.label1.TabIndex = 1;
-            this.label1.Text = "현재 추적중인 앱 :";
+            this.label1.Text = "추적중인 앱 :";
             // 
             // lblSelectApp
             // 
             this.lblSelectApp.AutoSize = true;
             this.lblSelectApp.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSelectApp.Location = new System.Drawing.Point(264, 53);
+            this.lblSelectApp.Location = new System.Drawing.Point(201, 53);
             this.lblSelectApp.Name = "lblSelectApp";
             this.lblSelectApp.Size = new System.Drawing.Size(44, 37);
             this.lblSelectApp.TabIndex = 2;
